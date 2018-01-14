@@ -20,6 +20,7 @@ handleChange(e) {
   this.setState({ newTodoDescription: e.target.value })
 }
 
+
 handleSubmit(e) {
   e.preventDefault();
   if (!this.state.newTodoDescription) { return }
@@ -34,12 +35,20 @@ toggleComplete(index) {
   this.setState({ todos: todos });
 }
 
+handleRemove (index){
+    todos.splice(index, 1);
+    this.setState({ToDo: todo});
+
+}
+
   render() {
     return (
       <div className="App">
         <ul>
           { this.state.todos.map( (todo, index) =>
-          <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } />
+          <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) }
+            handleRemove={this.handleRemove}
+          />
           )}
         </ul>
         <form onSubmit={(e) => this.handleSubmit(e)}>
