@@ -36,7 +36,7 @@ toggleComplete(index) {
 }
 
 handleRemove (index){
-    let todos = this.state.todos ;
+    let todos = this.state.todos;
     todos = todos.filter( (e, i) => i !== index);
     this.setState({ todos: todos });
 
