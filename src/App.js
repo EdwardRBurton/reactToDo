@@ -36,10 +36,15 @@ toggleComplete(index) {
 }
 
 handleRemove (index){
-    todos.splice(index, 1);
-    this.setState({ToDo: todo});
+    let todos = this.state.todos ;
+    todos = todos.filter( (e, i) => i !== index);
+    this.setState({ todos: todos });
 
 }
+
+//this.todos = this.todos.filter(function(item) {
+//   return item === youritemtomatch
+//});
 
   render() {
     return (
@@ -47,7 +52,7 @@ handleRemove (index){
         <ul>
           { this.state.todos.map( (todo, index) =>
           <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) }
-            handleRemove={this.handleRemove}
+            handleRemove = { () => this.handleRemove(index) }
           />
           )}
         </ul>
